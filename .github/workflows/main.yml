@@ -24,7 +24,19 @@ jobs:
         with:
           name: devops-war
           path: target/devops.war
-    
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: download the artifact
+        uses: actions/download-artifact@v4.0.0
+        with:
+          name: devops-war
+          path: /tmp/
+      - name: Display structure of downloaded files
+        run: ls -l /tmp/
+          
     
           #scp target/devops.war user:password@server/opt/tomcat/webapps/
           #ssh 
