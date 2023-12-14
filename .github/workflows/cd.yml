@@ -1,0 +1,19 @@
+#Workflow to deploy the artifacts
+
+name: cd
+on:
+  workflow_run:
+    workflows: ["ci"]
+    types: 
+      - completed
+    
+
+jobs:
+  build: 
+    runs-on: self-hosted
+    steps:
+      - name: Deployment with Docker
+        run: |
+          sudo docker rm -f web1
+          sudo doker rmi -f jchurtado/cicd:latest
+          sudo docker run -dt --name web1 -p 9000:8080 jchurtado/cicd:latest
