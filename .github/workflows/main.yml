@@ -27,6 +27,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: prod
     needs: build
     steps:
       - name: download the artifact
