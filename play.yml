@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: creating user
+      user: name=gagan state=present
+    - name: install package
+      package: name=telnet state=present
+    - name: copy file to remote machine
+      copy: src=./Dockerfile dest=/tmp/
