@@ -15,9 +15,12 @@ jobs:
     steps:
       - name: Checkout 
         uses: actions/checkout@v4.1.1
-      - name: Deployment using Kubernetes
+      - name: Deployment with Ansible
         run: |
-          kubectl delete deployment jchurtado-deployment 
-          kubectl apply -f deployment.yml
-          kubectl get deployment
-          
+          sudo ansible-playbook -i ./inv playbook1.yml
+     # - name: Deployment using Kubernetes
+      #  run: |
+       #   kubectl delete deployment jchurtado-deployment 
+        #  kubectl apply -f deployment.yml
+         # kubectl get deployment
+        
