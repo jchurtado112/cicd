@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4.1.1
       - name: Deployment with Ansible
         run: |
-          sudo ansible-playbook -i ./inv playbook1.yml
+          sudo ansible-playbook -i ./inv play.yml
      # - name: Deployment using Kubernetes
       #  run: |
        #   kubectl delete deployment jchurtado-deployment 
