@@ -11,9 +11,12 @@ on:
 jobs:
   build: 
     runs-on: self-hosted
+    environment: prod
     steps:
-      - name: Deployment with Docker
+      - name: Checkout 
+        uses: actions/checkout@v4.1.1
+      - name: Deployment using Kubernetes
         run: |
-          sudo docker rm -f web1
-          sudo docker rmi -f jchurtado/cicd:latest
-          sudo docker run -dt --name web1 -p 9000:8080 jchurtado/cicd:latest
+          kubectl apply -f deployment.yml
+          kubectl get deployment
+          
